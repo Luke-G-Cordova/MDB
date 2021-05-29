@@ -17,7 +17,7 @@ client.on('guildMemberAdd', member => {
 
 client.on('message', msg => {
     cmds(msg);
-    // test commit
+    
 });
 
 
