@@ -4,7 +4,6 @@ require('dotenv').config();
 const Discord = require('discord.js');
 const { cmds } = require('./cmds');
 const client = new Discord.Client();
-const {embed} = require('./style');
 
 client.on('ready', () => {
     console.log('I just restarted!');
@@ -15,10 +14,8 @@ client.on('guildMemberAdd', member => {
     channel.send(`Welcome to the server, ${member}`);
 });
 
-client.on('message', msg => {
-    cmds(msg);
-    
-});
+
+client.on('message', msg => cmds(msg));
 
 
 
