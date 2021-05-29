@@ -2,6 +2,7 @@
 require('dotenv').config();
 
 const Discord = require('discord.js');
+const { cmds } = require('./cmds');
 const client = new Discord.Client();
 const {embed} = require('./style');
 
@@ -15,10 +16,10 @@ client.on('guildMemberAdd', member => {
 });
 
 client.on('message', msg => {
-    if(msg.content === 'embed'){
-        msg.channel.send(embed({title:'My Title', description: 'My Description'}));
-    }
+    cmds(msg);
+    // test commit
 });
+
 
 
 client.login(process.env.TOKEN);
