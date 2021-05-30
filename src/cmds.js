@@ -1,11 +1,29 @@
 'use strict';
 const Discord = require('discord.js');
 const {embed} = require('./style');
+let CN = require('./channel-names');
 const PFIX = '$';
-async function cmds(msg){
-
-    // roll-assign
-    console.log(msg.channel.name);
+async function cmds(message){
+    let msg = message.content.toUpperCase();
+    let sender = message.author;
+    let [cmd, cont] = message.content.split(' ');
+    
+    // $assign [role]
+    if(message.channel.name === CN.roles){
+        let body = {};
+        switch(cont){
+            case 'student': 
+                body.t = `STUDENT`;
+                body.d = `${sender.username} is now a STUDENT`;
+                message.channel.send(`${sender}`);
+                message.channel.send(embed(body));
+                break;
+            default: 
+                if(sender.id !== process.env.CLIENT_ID){
+                    message.delete();
+                }
+        }
+    }
     // high auth cmds
         // kick
     // if(msg.content.startsWith(`${PFIX}kick `)){
@@ -35,6 +53,15 @@ async function cmds(msg){
     //     const user = msg.mentions.users.first();
     // }
     //     // delete messages
+    if(msg.startsWith(PFIX + 'CLEAR')){
+        async function clear(){
+            message.delete();
+            const fetch = await message.channel.messages.fetch({limit: cont});
+            message.channel.bulkDelete(fetch)
+                .catch(err => message.channel.send(`Error: ${err}`));
+        }
+        clear();
+    }
     // if(msg.content.startsWith(`${PFIX}clear `)){
     //     const reg = /\b\d+/;
     //     const limit = parseInt(reg.exec(msg.content))+1;

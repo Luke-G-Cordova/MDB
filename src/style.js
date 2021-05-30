@@ -14,12 +14,12 @@ TODO:
     than null.
 */
 function embed(obj){
-    if(!obj.title) return null;
-    if(!obj.description) return null;
+    if(!obj.t) return null;
+    if(!obj.d) return null;
     return new MessageEmbed()
-        .setTitle(obj.title)
+        .setTitle(obj.t)
         .setColor(purple)
-        .setDescription(obj.description)
+        .setDescription(obj.d)
     ;
 }
 
