@@ -3,20 +3,26 @@ require('dotenv').config();
 
 const Discord = require('discord.js');
 const { cmds } = require('./cmds');
+const { CN } = require('./channel-names');
+const { embed } = require('./style');
 const client = new Discord.Client();
 
 client.on('ready', () => {
     console.log('I just restarted!');
 });
-client.on('guildMemberAdd', member => {
+client.on('guildMemberAdd', guildMember => {
     console.log('here');
-    const channel = member.guild.channels.cache.find(ch => ch.name === '🤟new_devs🤟');
-    if(!channel) return;
-    channel.send(`Welcome to the server, ${member}`);
+    guildMember.guild.channels.cache.get(CN.new_devs).send(embed({
+        t: `Welcome!!`, d: `Welcome to the server <@${guildMember.user.id}>!!
+        \n Please navigate to the role-assign channel to get a role.
+        \nJust type $assign beginner to get your first role!`
+    }));
 });
 
 
-client.on('message', msg => cmds(msg));
+client.on('message', message => {
+    cmds(message);
+});
 
 
 

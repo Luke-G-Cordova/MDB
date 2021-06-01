@@ -20,8 +20,7 @@
                 </ul>
 
 User joins -
-    [ ] When a user joins they are directed to role-assign channel
-            (For some reason the guildMemberAdd event isnt firing properly)
+    [x] When a user joins they are directed to role-assign channel
     [x] In role-assign you can assign a role based on your level of experience in development.
             (maybe in the future get more roles)
 Role assignment -
