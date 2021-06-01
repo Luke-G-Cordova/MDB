@@ -9,6 +9,7 @@ client.on('ready', () => {
     console.log('I just restarted!');
 });
 client.on('guildMemberAdd', member => {
+    console.log('here');
     const channel = member.guild.channels.cache.find(ch => ch.name === '🤟new_devs🤟');
     if(!channel) return;
     channel.send(`Welcome to the server, ${member}`);

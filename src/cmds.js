@@ -1,22 +1,36 @@
 'use strict';
 const Discord = require('discord.js');
 const {embed} = require('./style');
-let CN = require('./channel-names');
+let {CN, ROLES} = require('./channel-names');
 const PFIX = '$';
 async function cmds(message){
     let msg = message.content.toUpperCase();
     let sender = message.author;
-    let [cmd, cont] = message.content.split(' ');
-    
+    let [cmd, cont] = msg.split(' ');
     // $assign [role]
     if(message.channel.name === CN.roles){
         let body = {};
         switch(cont){
-            case 'student': 
-                body.t = `STUDENT`;
-                body.d = `${sender.username} is now a STUDENT`;
-                message.channel.send(`${sender}`);
+            case 'BEGINNER':
+                message.member.roles.add(ROLES.BEGINNER_ROLE);
+                body.t = `BEGINNER`;
+                body.d = `${sender} is now a BEGINNER`;
                 message.channel.send(embed(body));
+                message.delete();
+                break;
+            case 'INTERMEDIATE': 
+                message.member.roles.add(ROLES.INTERMEDIATE_ROLE);
+                body.t = `INTERMEDIATE`;
+                body.d = `${sender} is now a INTERMEDIATE`;
+                message.channel.send(embed(body));
+                message.delete();
+                break;
+            case 'ADVANCED': 
+                message.member.roles.add(ROLES.ADVANCED_ROLE);
+                body.t = `BEGINNER`;
+                body.d = `${sender} is now a BEGINNER`;
+                message.channel.send(embed(body));
+                message.delete();
                 break;
             default: 
                 if(sender.id !== process.env.CLIENT_ID){
