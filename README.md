@@ -18,4 +18,18 @@
                     <li>ban [user]: this command is only for higher up mods or owners</li>
                     <li>give-role [user] [roll]: this command is only for higher up mods or owners</li>
                 </ul>
+
+User joins -
+    [ ] When a user joins they are directed to role-assign channel
+            (For some reason the guildMemberAdd event isnt firing properly)
+    [x] In role-assign you can assign a role based on your level of experience in development.
+            (maybe in the future get more roles)
+Role assignment -
+    [ ] Higher up mods can assign and take away roles. 
+    [ ] When a user makes a commit to a repository, they are given the contributer role automatically.
+    [ ] Developer role is given to people who make 10 commits to any repository.
+commands -
+    [x] clear command to clear messages.
+    [ ] role command for mods to give out roles.
+
 </pre>
