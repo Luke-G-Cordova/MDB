@@ -11,7 +11,6 @@ client.on('ready', () => {
     console.log('I just restarted!');
 });
 client.on('guildMemberAdd', guildMember => {
-    console.log('here');
     guildMember.guild.channels.cache.get(CN.new_devs).send(embed({
         t: `Welcome!!`, d: `Welcome to the server <@${guildMember.user.id}>!!
         \n Please navigate to the role-assign channel to get a role.

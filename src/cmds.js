@@ -54,7 +54,7 @@ async function cmds(message){
             message.delete();
             const fetch = await message.channel.messages.fetch({limit: cont});
             message.channel.bulkDelete(fetch)
-                .catch(err => message.channel.send(`Error: ${err}`));
+                .catch(err => message.channel.send(embed({ t: 'Something went wrong', d: `No clue what happened but it all broke lol`})));
         }
         if(message.member.roles.cache.find(mem => mem.id===ROLES.MOD_ROLE)){
             clear();
@@ -63,6 +63,9 @@ async function cmds(message){
             message.channel.send(embed({ t: 'Your role is too low', d: `${message.author}get a mod role to use this command`}));
         }
     }
+
+    // roles for contributers
+    
 }
 
 module.exports = {

@@ -28,7 +28,7 @@ Role assignment -
     [ ] When a user makes a commit to a repository, they are given the contributer role automatically.
     [ ] Developer role is given to people who make 10 commits to any repository.
 commands -
-    [x] clear command to clear messages.
+    [ ] clear command to clear messages. Something went wrong witht this
     [ ] role command for mods to give out roles.
 
 </pre>
